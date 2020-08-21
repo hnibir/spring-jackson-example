@@ -6,11 +6,13 @@ package spring.micro.services.springjacksonexample.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import spring.micro.services.springjacksonexample.deserializer.LocalDateDeserializer;
 import spring.micro.services.springjacksonexample.serializer.LocalDateSerializer;
 
 import javax.validation.constraints.NotBlank;
@@ -48,5 +50,6 @@ public class BeerDto {
     private OffsetDateTime lastModifiedDate;
 
     @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate myLocalDate;
 }
